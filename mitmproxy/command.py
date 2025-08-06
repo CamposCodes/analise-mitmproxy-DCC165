@@ -7,7 +7,7 @@ import inspect
 import logging
 import sys
 import textwrap
-import types
+import types_mitmproxy as types
 from collections.abc import Callable
 from collections.abc import Iterable
 from collections.abc import Sequence

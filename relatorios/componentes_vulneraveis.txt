@@ -1,0 +1,41 @@
+Run started:2025-08-06 16:05:27.778945
+
+Test results:
+>> Issue: [B408:blacklist] Using xml.dom.minidom to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+   Severity: Low   Confidence: High
+   CWE: CWE-20 (https://cwe.mitre.org/data/definitions/20.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b408-import-xml-minidom
+   Location: ./mitmproxy/contrib/wbxml/ASWBXML.py:30:0
+29	'''
+30	import xml.dom.minidom
+31	import logging
+
+--------------------------------------------------
+>> Issue: [B318:blacklist] Using xml.dom.minidom.parseString to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parseString with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+   Severity: Medium   Confidence: High
+   CWE: CWE-20 (https://cwe.mitre.org/data/definitions/20.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b313-b320-xml-bad-minidom
+   Location: ./mitmproxy/contrib/wbxml/ASWBXML.py:819:16
+818			# note xmlDoc has .childNodes and .parentNode
+819			self.xmlDoc = xml.dom.minidom.parseString(strXML)
+820	
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 732
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 1
+		Medium: 1
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 2
+Files skipped (0):

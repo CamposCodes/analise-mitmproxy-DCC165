@@ -1,0 +1,2355 @@
+Working... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:05
+Run started:2025-08-06 13:49:27.150513
+
+Test results:
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addonmanager.py:54:8
+53	        tb = cut_traceback(tb, "invoke_addon")
+54	        assert etype
+55	        assert value
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addonmanager.py:55:8
+54	        assert etype
+55	        assert value
+56	        logger.error(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addonmanager.py:85:8
+84	        """
+85	        assert not isinstance(choices, str)
+86	        if name in self.master.options:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addonmanager.py:247:8
+246	        """
+247	        assert isinstance(event, hooks.Hook)
+248	        for a in traverse([addon]):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/asgiapp.py:128:12
+127	        elif event["type"] == "http.response.body":
+128	            assert flow.response
+129	            flow.response.content += event.get("body", b"")
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./addons/browser.py:3:0
+2	import shutil
+3	import subprocess
+4	import tempfile
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html
+   Location: ./addons/browser.py:23:16
+22	            if (
+23	                subprocess.run(
+24	                    ["flatpak", "info", browser],
+25	                    stdout=subprocess.DEVNULL,
+26	                    stderr=subprocess.DEVNULL,
+27	                ).returncode
+28	                == 0
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./addons/browser.py:23:16
+22	            if (
+23	                subprocess.run(
+24	                    ["flatpak", "info", browser],
+25	                    stdout=subprocess.DEVNULL,
+26	                    stderr=subprocess.DEVNULL,
+27	                ).returncode
+28	                == 0
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./addons/browser.py:84:12
+83	        self.browser.append(
+84	            subprocess.Popen(
+85	                [
+86	                    *cmd,
+87	                    "--user-data-dir=%s" % str(tdir.name),
+88	                    "--proxy-server={}:{}".format(
+89	                        ctx.options.listen_host or "127.0.0.1",
+90	                        ctx.options.listen_port or "8080",
+91	                    ),
+92	                    "--disable-fre",
+93	                    "--no-default-browser-check",
+94	                    "--no-first-run",
+95	                    "--disable-extensions",
+96	                    "about:blank",
+97	                ],
+98	                stdout=subprocess.DEVNULL,
+99	                stderr=subprocess.DEVNULL,
+100	            )
+101	        )
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./addons/browser.py:167:12
+166	        self.browser.append(
+167	            subprocess.Popen(
+168	                [
+169	                    *cmd,
+170	                    "--profile",
+171	                    str(tdir.name),
+172	                    "--new-window",
+173	                    "about:blank",
+174	                ],
+175	                stdout=subprocess.DEVNULL,
+176	                stderr=subprocess.DEVNULL,
+177	            )
+178	        )
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/clientplayback.py:99:12
+98	            mode = UpstreamMode.parse(options.mode[0])
+99	            assert isinstance(mode, UpstreamMode)  # remove once mypy supports Self.
+100	            context.server.via = flow.server_conn.via = (mode.scheme, mode.address)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/clientplayback.py:124:8
+123	    ) -> None:
+124	        assert isinstance(level, int)
+125	        logger.log(level=level, msg=f"[replay] {message}")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/clientplayback.py:178:16
+177	            try:
+178	                assert self.inflight
+179	                h = ReplayHandler(self.inflight, self.options)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/dns_resolver.py:121:8
+120	        q = message.question
+121	        assert q
+122	        try:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/dumper.py:203:8
+202	
+203	        assert flow.response
+204	        code_int = flow.response.status_code
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/dumper.py:298:8
+297	    def websocket_message(self, f: http.HTTPFlow):
+298	        assert f.websocket is not None  # satisfy type checker
+299	        if self.match(f):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/dumper.py:312:8
+311	    def websocket_end(self, f: http.HTTPFlow):
+312	        assert f.websocket is not None  # satisfy type checker
+313	        if self.match(f):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/dumper.py:400:8
+399	    def dns_response(self, f: dns.DNSFlow):
+400	        assert f.response
+401	        if self.match(f):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/dumper.py:419:8
+418	    def dns_error(self, f: dns.DNSFlow):
+419	        assert f.error
+420	        if self.match(f):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/export.py:21:4
+20	        raise exceptions.CommandError("Can't export flow with no request.")
+21	    assert isinstance(f, http.HTTPFlow)
+22	    request = f.request.copy()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/export.py:40:4
+39	        raise exceptions.CommandError("Can't export flow with no response.")
+40	    assert isinstance(f, http.HTTPFlow)
+41	    response = f.response.copy()  # type: ignore
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/export.py:49:8
+48	        text = request.get_text(strict=True)
+49	        assert text
+50	    except ValueError:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/maplocal.py:59:4
+58	    m = re.search(spec.regex, url)
+59	    assert m
+60	    if m.groups():
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/next_layer.py:118:8
+117	    ) -> Layer | None:
+118	        assert context.layers
+119	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/proxyauth.py:91:8
+90	        """
+91	        assert self.validator
+92	        username = None
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html
+   Location: ./addons/proxyauth.py:102:8
+101	            is_valid = self.validator(username, password)
+102	        except Exception:
+103	            pass
+104	
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./addons/proxyserver.py:284:57
+283	                (host, port, _) = collections.Counter(listen_addrs).most_common(1)[0][0]
+284	                dup_addr = human.format_address((host or "0.0.0.0", port))
+285	                raise exceptions.OptionsError(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/proxyserver.py:378:8
+377	        # Prevent mitmproxy from recursively connecting to itself.
+378	        assert data.server.address
+379	        connect_host, connect_port, *_ = data.server.address
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/save.py:83:16
+82	                    raise exceptions.OptionsError(str(e)) from e
+83	                assert self.stream
+84	                self.stream.flt = self.filt
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/savehar.py:137:12
+136	        elif flow.server_conn.timestamp_tcp_setup:
+137	            assert flow.server_conn.timestamp_start
+138	            connect_time = 1000 * (
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/script.py:36:8
+35	        spec = importlib.util.spec_from_loader(fullname, loader=loader)
+36	        assert spec
+37	        m = importlib.util.module_from_spec(spec)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/server_side_events.py:15:8
+14	    def response(self, flow: http.HTTPFlow):
+15	        assert flow.response
+16	        is_sse = flow.response.headers.get("content-type", "").startswith(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/serverplayback.py:282:16
+281	            if rflow:
+282	                assert rflow.response
+283	                response = rflow.response.copy()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/stickycookie.py:61:8
+60	    def response(self, flow: http.HTTPFlow):
+61	        assert flow.response
+62	        if self.flt:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/strip_dns_https_records.py:16:8
+15	    def dns_response(self, flow: dns.DNSFlow):
+16	        assert flow.response
+17	        if ctx.options.strip_ech:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/tlsconfig.py:216:8
+215	
+216	        assert isinstance(tls_start.conn, connection.Client)
+217	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/tlsconfig.py:279:8
+278	
+279	        assert isinstance(tls_start.conn, connection.Server)
+280	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/tlsconfig.py:284:8
+283	        server: connection.Server = tls_start.conn
+284	        assert server.address
+285	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/tlsconfig.py:349:12
+348	            # We need to set SNI + enable hostname verification.
+349	            assert isinstance(server.sni, str)
+350	            # Manually enable hostname verification on the context object.
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/tlsconfig.py:387:8
+386	        # keep the following part in sync with `tls_start_client`
+387	        assert isinstance(tls_start.conn, connection.Client)
+388	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/tlsconfig.py:428:8
+427	        # keep the following part in sync with `tls_start_server`
+428	        assert isinstance(tls_start.conn, connection.Server)
+429	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/tlsconfig.py:432:8
+431	        server: connection.Server = tls_start.conn
+432	        assert server.address
+433	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./addons/update_alt_svc.py:25:8
+24	    def responseheaders(self, flow: HTTPFlow):
+25	        assert flow.response
+26	        if (
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./certs.py:66:8
+65	    def __init__(self, cert: x509.Certificate):
+66	        assert isinstance(cert, x509.Certificate)
+67	        self._cert = cert
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./certs.py:344:8
+343	    if is_valid_commonname:
+344	        assert commonname is not None
+345	        subject.append(x509.NameAttribute(NameOID.COMMON_NAME, commonname))
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./certs.py:347:8
+346	    if organization is not None:
+347	        assert organization is not None
+348	        subject.append(x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization))
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./command.py:153:8
+152	        typ = mitmproxy.types.CommandTypes.get(self.return_type)
+153	        assert typ
+154	        if not typ.is_valid(self.manager, typ, ret):
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html
+   Location: ./command.py:181:16
+180	                    is_command = isinstance(getattr(o, "command_name", None), str)
+181	                except Exception:
+182	                    pass  # getattr may raise if o implements __getattr__.
+183	                else:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./command.py:225:16
+224	            if expected and expected.kind is inspect.Parameter.VAR_POSITIONAL:
+225	                assert not next_params
+226	            elif next_params:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./command.py:338:8
+337	    def decorator(f: types.FunctionType) -> types.FunctionType:
+338	        assert name in f.__annotations__
+339	        f.__annotations__[name] = type
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./connection.py:204:8
+203	        state = self.state.name
+204	        assert state
+205	        return f"Client({human.format_address(self.peername)}, state={state.lower()}{tls_state})"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./connection.py:308:8
+307	        state = self.state.name
+308	        assert state
+309	        return f"Server({human.format_address(self.address)}, state={state.lower()}{tls_state}{local_port})"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/_registry.py:55:16
+54	                priority = view.render_priority(data, metadata)
+55	                assert isinstance(priority, (int, float)), (
+56	                    f"render_priority for {view.name} did not return a number."
+57	                )
+58	            except Exception:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/_registry.py:63:8
+62	                    max_prio = (priority, view)
+63	        assert max_prio, "At least one view needs to have a working `render_priority`."
+64	        return max_prio[1]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/_utils.py:62:8
+61	    except ValueError:
+62	        assert isinstance(message, http.Message)
+63	        content = message.raw_content
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/_view_http3.py:92:8
+91	        tcp_message = metadata.tcp_message
+92	        assert isinstance(flow, tcp.TCPFlow)
+93	        assert tcp_message
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/_view_http3.py:93:8
+92	        assert isinstance(flow, tcp.TCPFlow)
+93	        assert tcp_message
+94	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/_view_mqtt.py:91:12
+90	        if self.packet_type == self.CONNECT:
+91	            assert self.payload
+92	            s += f"""
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/_view_mqtt.py:104:12
+103	        elif self.packet_type == self.PUBLISH:
+104	            assert self.payload
+105	            topic_name = strutils.bytes_to_escaped_str(self.topic_name)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./contentviews/base.py:80:8
+79	    def __lt__(self, other):
+80	        assert isinstance(other, View)
+81	        return self.name.__lt__(other.name)
+
+--------------------------------------------------
+>> Issue: [B408:blacklist] Using xml.dom.minidom to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+   Severity: Low   Confidence: High
+   CWE: CWE-20 (https://cwe.mitre.org/data/definitions/20.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b408-import-xml-minidom
+   Location: ./contrib/wbxml/ASWBXML.py:30:0
+29	'''
+30	import xml.dom.minidom
+31	import logging
+
+--------------------------------------------------
+>> Issue: [B318:blacklist] Using xml.dom.minidom.parseString to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parseString with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+   Severity: Medium   Confidence: High
+   CWE: CWE-20 (https://cwe.mitre.org/data/definitions/20.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b313-b320-xml-bad-minidom
+   Location: ./contrib/wbxml/ASWBXML.py:819:16
+818			# note xmlDoc has .childNodes and .parentNode
+819			self.xmlDoc = xml.dom.minidom.parseString(strXML)
+820	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./coretypes/serializable.py:133:8
+132	        attr_type, nt = typing.get_args(attr_type)
+133	        assert nt is NoneType, (
+134	            f"{attr_name}: only `x | None` union types are supported`"
+135	        )
+136	        if attr_val is None:
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random
+   Location: ./dns.py:561:22
+560	        state = self.get_state()
+561	        state["id"] = random.randint(0, 65535)
+562	        return DNSMessage.from_state(state)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./flow.py:162:8
+161	    def set_state(self, state: serializable.State) -> None:
+162	        assert state.pop("version") == version.FLOW_FORMAT_VERSION
+163	        assert state.pop("type") == self.type
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./flow.py:163:8
+162	        assert state.pop("version") == version.FLOW_FORMAT_VERSION
+163	        assert state.pop("type") == self.type
+164	        self.id = state.pop("id")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./flow.py:181:8
+180	        self._backup = state.pop("backup", None)
+181	        assert state == {}
+182	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./master.py:140:12
+139	            mode = ReverseMode.parse(self.options.mode[0])
+140	            assert isinstance(mode, ReverseMode)
+141	            f.request.host, f.request.port, *_ = mode.address
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./net/dns/https_records.py:64:8
+63	        target_name = data.pop("target_name")
+64	        assert isinstance(target_name, str)
+65	        priority = data.pop("priority")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./net/dns/https_records.py:66:8
+65	        priority = data.pop("priority")
+66	        assert isinstance(priority, int)
+67	        params: dict[int, bytes] = {}
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./net/dns/https_records.py:71:12
+70	                k = SVCParamKeys[k.upper()].value
+71	            assert isinstance(v, str)
+72	            params[k] = strutils.escaped_str_to_bytes(v)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./net/tls.py:244:8
+243	    if alpn_select_callback is not None:
+244	        assert callable(alpn_select_callback)
+245	        context.set_alpn_select_callback(alpn_select_callback)
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./platform/osx.py:1:0
+1	import subprocess
+2	
+3	from . import pf
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./platform/osx.py:23:15
+22	    try:
+23	        stxt = subprocess.check_output(STATECMD, stderr=subprocess.STDOUT)
+24	    except subprocess.CalledProcessError as e:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./platform/windows.py:504:12
+503	        if packet.address_family == socket.AF_INET:
+504	            assert self.ipv4_address
+505	            packet.dst_addr = self.ipv4_address
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./platform/windows.py:509:12
+508	                self.ipv6_address = get_local_ip6(packet.src_addr)
+509	            assert self.ipv6_address
+510	            packet.dst_addr = self.ipv6_address
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/events.py:76:8
+75	            raise TypeError("CommandCompleted may not be instantiated directly.")
+76	        assert is_dataclass(cls)
+77	        return super().__new__(cls)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layer.py:113:8
+112	            Layer.__last_debug_message = message
+113	        assert self.debug is not None
+114	        return commands.Log(textwrap.indent(message, self.debug), DEBUG)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layer.py:141:16
+140	            if pause_finished:
+141	                assert isinstance(event, events.CommandCompleted)
+142	                yield from self.__continue(event)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layer.py:230:8
+229	        """
+230	        assert self._paused is not None
+231	        command_generator = self._paused.generator
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/dns.py:150:8
+149	    def state_query(self, event: events.Event) -> layer.CommandGenerator[None]:
+150	        assert isinstance(event, events.ConnectionEvent)
+151	        from_client = event.connection is self.context.client
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:170:8
+169	        parent = self.context.layers[i - 1]
+170	        assert isinstance(parent, HttpLayer)
+171	        return parent.mode
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:226:12
+225	            # Determine .scheme, .host and .port attributes for transparent requests
+226	            assert self.context.server.address
+227	            self.flow.request.data.host = self.context.server.address[0]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:268:12
+267	        ):
+268	            assert self.context.server.address
+269	            self.flow.request.host_header = url.hostport(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:370:12
+369	        elif isinstance(event, RequestTrailers):
+370	            assert self.flow.request
+371	            self.flow.request.trailers = event.trailers
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:433:8
+432	    def start_response_stream(self) -> layer.CommandGenerator[None]:
+433	        assert self.flow.response
+434	        yield SendHttp(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:445:8
+444	    ) -> layer.CommandGenerator[None]:
+445	        assert self.flow.response
+446	        if isinstance(event, ResponseData):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:486:12
+485	        elif isinstance(event, ResponseTrailers):
+486	            assert self.flow.response
+487	            self.flow.response.trailers = event.trailers
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:489:12
+488	        elif isinstance(event, ResponseEndOfMessage):
+489	            assert self.flow.response
+490	            self.flow.response.data.content = bytes(self.response_body_buf)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:496:8
+495	        """We have either consumed the entire response from the server or the response was set by an addon."""
+496	        assert self.flow.response
+497	        self.flow.response.timestamp_end = time.time()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:541:8
+540	
+541	        assert self.flow.response
+542	        if self.flow.response.status_code == 101:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:643:16
+642	            if response:
+643	                assert self.flow.response
+644	                self.flow.response.stream = True
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:661:12
+660	        elif self.context.options.validate_inbound_headers:
+661	            assert self.flow.response is not None
+662	            try:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:849:8
+848	    def passthrough(self, event: events.Event) -> layer.CommandGenerator[None]:
+849	        assert self.flow.response
+850	        assert self.child_layer
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:850:8
+849	        assert self.flow.response
+850	        assert self.child_layer
+851	        # HTTP events -> normal connection events
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:966:16
+965	                proxy_mode = self.context.client.proxy_mode
+966	                assert isinstance(proxy_mode, UpstreamMode)
+967	                self.context.server.via = (proxy_mode.scheme, proxy_mode.address)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:987:16
+986	                conn = conn.context.layers[-1]
+987	                assert isinstance(conn, Http1Connection)
+988	                assert conn.stream_id
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:988:16
+987	                assert isinstance(conn, Http1Connection)
+988	                assert conn.stream_id
+989	                stream_id = conn.stream_id
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/__init__.py:1027:12
+1026	        for command in child.handle_event(event):
+1027	            assert isinstance(command, commands.Command)
+1028	            # Streams may yield blocking commands, which ultimately generate CommandCompleted events.
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_events.py:136:8
+135	    def __init__(self, stream_id: int, message: str, code: ErrorCode):
+136	        assert isinstance(code, ErrorCode)
+137	        self.stream_id = stream_id
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_events.py:148:8
+147	    def __init__(self, stream_id: int, message: str, code: ErrorCode):
+148	        assert isinstance(code, ErrorCode)
+149	        self.stream_id = stream_id
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:89:8
+88	    def read_body(self, event: events.Event) -> layer.CommandGenerator[None]:
+89	        assert self.stream_id is not None
+90	        while True:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:116:16
+115	            elif isinstance(h11_event, h11.EndOfMessage):
+116	                assert self.request
+117	                if h11_event.headers:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:130:8
+129	        """
+130	        assert self.stream_id
+131	        if isinstance(event, events.DataReceived):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:162:8
+161	    def passthrough(self, event: events.Event) -> layer.CommandGenerator[None]:
+162	        assert self.stream_id
+163	        if isinstance(event, events.DataReceived):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:179:12
+178	        if self.request_done and self.response_done:
+179	            assert self.request
+180	            assert self.response
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:180:12
+179	            assert self.request
+180	            assert self.response
+181	            if should_make_pipe(self.request, self.response):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:236:8
+235	    def send(self, event: HttpEvent) -> layer.CommandGenerator[None]:
+236	        assert event.stream_id == self.stream_id
+237	        if isinstance(event, ResponseHeaders):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:252:12
+251	        elif isinstance(event, ResponseData):
+252	            assert self.response
+253	            if "chunked" in self.response.headers.get("transfer-encoding", "").lower():
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:260:12
+259	        elif isinstance(event, ResponseEndOfMessage):
+260	            assert self.request
+261	            assert self.response
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:261:12
+260	            assert self.request
+261	            assert self.response
+262	            if (
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:355:12
+354	        if self.stream_id is None:
+355	            assert isinstance(event, RequestHeaders)
+356	            self.stream_id = event.stream_id
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:358:8
+357	            self.request = event.request
+358	        assert self.stream_id == event.stream_id
+359	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:380:12
+379	        elif isinstance(event, RequestData):
+380	            assert self.request
+381	            if "chunked" in self.request.headers.get("transfer-encoding", "").lower():
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:388:12
+387	        elif isinstance(event, RequestEndOfMessage):
+388	            assert self.request
+389	            if "chunked" in self.request.headers.get("transfer-encoding", "").lower():
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http1.py:406:12
+405	                return
+406	            assert self.stream_id is not None
+407	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_http_h2.py:82:8
+81	        frame_size = len(data)
+82	        assert pad_length is None
+83	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_upstream_proxy.py:33:8
+32	    def make(cls, ctx: context.Context, send_connect: bool) -> tunnel.LayerStack:
+33	        assert ctx.server.via
+34	        scheme, address = ctx.server.via
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_upstream_proxy.py:35:8
+34	        scheme, address = ctx.server.via
+35	        assert scheme in ("http", "https")
+36	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/http/_upstream_proxy.py:51:8
+50	            return (yield from super().start_handshake())
+51	        assert self.conn.address
+52	        flow = http.HTTPFlow(self.context.client, self.tunnel_connection)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/modes.py:69:8
+68	        spec = self.context.client.proxy_mode
+69	        assert isinstance(spec, ReverseMode)
+70	        self.context.server.address = spec.address
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/modes.py:92:8
+91	    def _handle_event(self, event: events.Event) -> layer.CommandGenerator[None]:
+92	        assert self.context.server.address, "No server address set."
+93	        self.child_layer = layer.NextLayer(self.context)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_client_hello_parser.py:74:8
+73	    ) -> None:
+74	        assert input_buf.pull_uint8() == HandshakeType.CLIENT_HELLO
+75	        length = 0
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./proxy/layers/quic/_client_hello_parser.py:90:40
+89	        for dgm in datagrams:
+90	            quic.receive_datagram(dgm, ("0.0.0.0", 0), now=time.time())
+91	    except QuicClientHello as hello:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_client_hello_parser.py:100:4
+99	    quic_logger = quic._configuration.quic_logger
+100	    assert isinstance(quic_logger, QuicLogger)
+101	    traces = quic_logger.to_dict().get("traces")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_client_hello_parser.py:102:4
+101	    traces = quic_logger.to_dict().get("traces")
+102	    assert isinstance(traces, list)
+103	    for trace in traces:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:108:8
+107	    def open_server_stream(self, server_stream_id) -> None:
+108	        assert self._server_stream_id is None
+109	        self._server_stream_id = server_stream_id
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:235:16
+234	                # ensure we haven't just forgotten to register the ID
+235	                assert stream_is_client_initiated(event.stream_id) == from_client
+236	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:340:8
+339	        conn.state &= ~connection.ConnectionState.CAN_READ
+340	        assert conn.timestamp_start is not None
+341	        if conn.timestamp_end is None:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:367:20
+366	                if isinstance(command, commands.SendData):
+367	                    assert stream_id is not None
+368	                    if command.connection.state & connection.ConnectionState.CAN_WRITE:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:373:20
+372	                elif isinstance(command, commands.CloseConnection):
+373	                    assert stream_id is not None
+374	                    if command.connection.state & connection.ConnectionState.CAN_WRITE:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:397:20
+396	                elif isinstance(command, commands.OpenConnection):
+397	                    assert not to_client
+398	                    assert stream_id is None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:398:20
+397	                    assert not to_client
+398	                    assert stream_id is None
+399	                    client_stream_id = child_layer.stream_id(client=True)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_raw_layers.py:400:20
+399	                    client_stream_id = child_layer.stream_id(client=True)
+400	                    assert client_stream_id is not None
+401	                    stream_id = self.get_next_available_stream_id(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:81:12
+80	            # which TunnelLayer recognizes as belonging to our connection.
+81	            assert self.quic
+82	            scheduled_time = self._wakeup_commands.pop(event.command)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:105:12
+104	        if isinstance(command, QuicStreamCommand) and command.connection is self.conn:
+105	            assert self.quic
+106	            if isinstance(command, SendQuicStreamData):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:135:8
+134	        # must only be called if QUIC is uninitialized
+135	        assert not self.quic
+136	        assert not self.tls
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:136:8
+135	        assert not self.quic
+136	        assert not self.tls
+137	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:172:8
+171	        # send all queued datagrams
+172	        assert self.quic
+173	        now = self._time()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:176:12
+175	        for data, addr in self.quic.datagrams_to_send(now=now):
+176	            assert addr == self.conn.peername
+177	            yield commands.SendData(self.tunnel_connection, data)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:194:8
+193	    ) -> layer.CommandGenerator[tuple[bool, str | None]]:
+194	        assert self.quic
+195	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:217:16
+216	                self.conn.certificate_list = [certs.Cert(cert) for cert in all_certs]
+217	                assert self.quic.tls.key_schedule
+218	                self.conn.cipher = self.quic.tls.key_schedule.cipher_suite.name
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:267:8
+266	    def receive_data(self, data: bytes) -> layer.CommandGenerator[None]:
+267	        assert self.quic
+268	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:324:8
+323	    def receive_close(self) -> layer.CommandGenerator[None]:
+324	        assert self.quic
+325	        # if `_close_event` is not set, the underlying connection has been closed
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:341:8
+340	        # non-stream data uses datagram frames
+341	        assert self.quic
+342	        if data:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/quic/_stream_layers.py:551:8
+550	        # send the client hello to aioquic
+551	        assert self.quic
+552	        for dgm in self.handshake_datagram_buf:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/tcp.py:104:8
+103	
+104	        assert isinstance(event, events.ConnectionEvent)
+105	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/tls.py:269:8
+268	    def start_tls(self) -> layer.CommandGenerator[None]:
+269	        assert not self.tls
+270	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/tls.py:282:8
+281	            return
+282	        assert tls_start.ssl_conn
+283	        self.tls = tls_start.ssl_conn
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/tls.py:331:16
+330	            ]:
+331	                assert isinstance(last_err, tuple)
+332	                err = last_err[2]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/udp.py:103:8
+102	
+103	        assert isinstance(event, events.ConnectionEvent)
+104	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/websocket.py:104:8
+103	        # Parse extension headers. We only support deflate at the moment and ignore everything else.
+104	        assert self.flow.response  # satisfy type checker
+105	        ext_header = self.flow.response.headers.get("Sec-WebSocket-Extensions", "")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/layers/websocket.py:138:8
+137	    def relay_messages(self, event: events.Event) -> layer.CommandGenerator[None]:
+138	        assert self.flow.websocket  # satisfy type checker
+139	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:105:12
+104	        if not isinstance(mode, TypeVar):
+105	            assert issubclass(mode, mode_specs.ProxyMode)
+106	            assert mode.type_name not in ServerInstance.__modes
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:106:12
+105	            assert issubclass(mode, mode_specs.ProxyMode)
+106	            assert mode.type_name not in ServerInstance.__modes
+107	            ServerInstance.__modes[mode.type_name] = cls
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:191:12
+190	        if writer is None:
+191	            assert isinstance(reader, mitmproxy_rs.Stream)
+192	            writer = reader
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:198:12
+197	        if isinstance(self.mode, mode_specs.TransparentMode):
+198	            assert isinstance(writer, asyncio.StreamWriter)
+199	            s = cast(socket.socket, writer.get_extra_info("socket"))
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:201:16
+200	            try:
+201	                assert platform.original_addr
+202	                original_dst = platform.original_addr(s)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:253:8
+252	    async def _start(self) -> None:
+253	        assert not self._servers
+254	        host = self.mode.listen_host(ctx.options.listen_host)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:256:8
+255	        port = self.mode.listen_port(ctx.options.listen_port)
+256	        assert port is not None
+257	        try:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:262:16
+261	            if e.errno == errno.EADDRINUSE and self.mode.custom_listen_port is None:
+262	                assert (
+263	                    self.mode.custom_listen_host is None
+264	                )  # since [@ [listen_addr:]listen_port]
+265	                message += f"\nTry specifying a different port by using `--mode {self.mode.full_spec}@{port + 2}`."
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:269:8
+268	    async def _stop(self) -> None:
+269	        assert self._servers
+270	        try:
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./proxy/mode_servers.py:312:57
+311	            if host == "":
+312	                ipv4 = await self.start_udp_based_server("0.0.0.0", port)
+313	                servers.append(ipv4)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:378:8
+377	        conf = self.client_conf()
+378	        assert conf
+379	        logger.info("-" * 60 + "\n" + conf + "\n" + "-" * 60)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:466:8
+465	    async def _stop(self) -> None:
+466	        assert self._instance
+467	        assert self._server
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:467:8
+466	        assert self._instance
+467	        assert self._server
+468	        self.__class__._instance = None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:527:8
+526	    async def _start(self) -> None:
+527	        assert self._server is None
+528	        self._server = await mitmproxy_rs.tun.create_tun_interface(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_servers.py:536:8
+535	    async def _stop(self) -> None:
+536	        assert self._server is not None
+537	        try:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/mode_specs.py:70:8
+69	        cls.type_name = cls.__name__.removesuffix("Mode").lower()
+70	        assert cls.type_name not in ProxyMode.__types
+71	        ProxyMode.__types[cls.type_name] = cls
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:145:12
+144	            writer = self.transports.pop(self.client).writer
+145	            assert writer
+146	            writer.close()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:250:16
+249	
+250	                assert command.connection.peername
+251	                if command.connection.address[0] != command.connection.peername[0]:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:271:8
+270	        task = asyncio.current_task()
+271	        assert task is not None
+272	        self.wakeup_timer.discard(task)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:283:8
+282	        reader = self.transports[connection].reader
+283	        assert reader
+284	        while True:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:322:12
+321	            writer = self.transports[connection].writer
+322	            assert writer
+323	            writer.close()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:354:12
+353	                self.log(f"Closing connection due to inactivity: {self.client}")
+354	            assert handler
+355	            handler.cancel("timeout")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:393:24
+392	                    if isinstance(command, commands.OpenConnection):
+393	                        assert command.connection not in self.transports
+394	                        handler = asyncio_utils.create_task(
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:410:24
+409	                        )
+410	                        assert task is not None
+411	                        self.wakeup_timer.add(task)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:419:24
+418	                        writer = self.transports[command.connection].writer
+419	                        assert writer
+420	                        if not writer.is_closing():
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:449:16
+448	                writer = self.transports[connection].writer
+449	                assert writer
+450	                if not writer.is_closing():
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:462:12
+461	            handler = self.transports[connection].handler
+462	            assert handler
+463	            handler.cancel("closed by command")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/server.py:601:4
+600	    # Serve requests until Ctrl+C is pressed
+601	    assert server.sockets
+602	    print(f"Serving on {human.format_address(server.sockets[0].getsockname())}")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./proxy/utils.py:52:8
+51	    def __iadd__(self, other: bytes):
+52	        assert isinstance(other, bytes)
+53	        self._chunks.append(other)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./test/tflow.py:148:4
+147	
+148	    assert resp is False or isinstance(resp, dns.DNSMessage)
+149	    assert err is False or isinstance(err, flow.Error)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./test/tflow.py:149:4
+148	    assert resp is False or isinstance(resp, dns.DNSMessage)
+149	    assert err is False or isinstance(err, flow.Error)
+150	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./test/tflow.py:185:4
+184	
+185	    assert resp is False or isinstance(resp, http.Response)
+186	    assert err is False or isinstance(err, flow.Error)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./test/tflow.py:186:4
+185	    assert resp is False or isinstance(resp, http.Response)
+186	    assert err is False or isinstance(err, flow.Error)
+187	    assert ws is False or isinstance(ws, websocket.WebSocketData)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./test/tflow.py:187:4
+186	    assert err is False or isinstance(err, flow.Error)
+187	    assert ws is False or isinstance(ws, websocket.WebSocketData)
+188	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/consoleaddons.py:510:20
+509	                case _:
+510	                    assert False, "should be exhaustive"
+511	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:111:8
+110	        flow = self.flow
+111	        assert isinstance(flow, http.HTTPFlow)
+112	        if self.flow.intercepted and not flow.response:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:119:8
+118	        flow = self.flow
+119	        assert isinstance(flow, http.HTTPFlow)
+120	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:134:8
+133	        flow = self.flow
+134	        assert isinstance(flow, dns.DNSFlow)
+135	        if self.flow.intercepted and not flow.response:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:142:8
+141	        flow = self.flow
+142	        assert isinstance(flow, dns.DNSFlow)
+143	        if self.flow.intercepted and flow.response:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:156:8
+155	        flow = self.flow
+156	        assert isinstance(flow, http.HTTPFlow)
+157	        assert flow.websocket
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:157:8
+156	        assert isinstance(flow, http.HTTPFlow)
+157	        assert flow.websocket
+158	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:169:8
+168	        flow = self.flow
+169	        assert isinstance(flow, http.HTTPFlow)
+170	        return self.conn_text(flow.request)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:174:8
+173	        flow = self.flow
+174	        assert isinstance(flow, http.HTTPFlow)
+175	        return self.conn_text(flow.response)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:179:8
+178	        flow = self.flow
+179	        assert isinstance(flow, dns.DNSFlow)
+180	        return self.dns_message_text("request", flow.request)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:184:8
+183	        flow = self.flow
+184	        assert isinstance(flow, dns.DNSFlow)
+185	        return self.dns_message_text("response", flow.response)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:212:8
+211	        flow = self.flow
+212	        assert isinstance(flow, http.HTTPFlow)
+213	        assert flow.websocket is not None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:213:8
+212	        assert isinstance(flow, http.HTTPFlow)
+213	        assert flow.websocket is not None
+214	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/flowview.py:271:8
+270	        flow = self.flow
+271	        assert isinstance(flow, (tcp.TCPFlow, udp.UDPFlow))
+272	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/grideditor/base.py:284:16
+283	            for r in value:
+284	                assert len(r) == len(self.columns)
+285	                first_width = max(len(r), first_width)
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./tools/console/master.py:8:0
+7	import stat
+8	import subprocess
+9	import sys
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./tools/console/master.py:148:16
+147	            try:
+148	                subprocess.call(cmd)
+149	            except Exception:
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./tools/console/master.py:183:16
+182	            try:
+183	                subprocess.call(cmd, shell=False)
+184	            except Exception:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/master.py:254:8
+253	    def overlay(self, widget, **kwargs):
+254	        assert self.window
+255	        self.window.set_overlay(widget, **kwargs)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/master.py:258:8
+257	    def switch_view(self, name):
+258	        assert self.window
+259	        self.window.push(name)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/console/statusbar.py:180:8
+179	        callback = self.prompting
+180	        assert callback is not None
+181	        self.prompt_done()
+
+--------------------------------------------------
+>> Issue: [B610:django_extra_used] Use of extra potential SQL attack vector.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b610_django_extra_used.html
+   Location: ./tools/main.py:104:30
+103	                    )
+104	                opts.update(**extra(args))
+105	
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: ''
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html
+   Location: ./tools/web/app.py:243:27
+242	            if not self.current_user:
+243	                password = ""
+244	                if auth_header := self.request.headers.get("Authorization"):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/web/app.py:663:8
+662	        message = getattr(self.flow, message)
+663	        assert isinstance(self.flow, HTTPFlow)
+664	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/web/app.py:712:8
+711	        flow = self.flow
+712	        assert isinstance(flow, (HTTPFlow, TCPFlow, UDPFlow))
+713	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/web/app.py:740:20
+739	                    max_lines -= d["text"].count("\n") + 1
+740	                    assert max_lines is not None
+741	                    if max_lines <= 0:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./tools/web/static_viewer.py:53:8
+52	    for f in flows:
+53	        assert isinstance(f, http.HTTPFlow)
+54	        for m in ("request", "response"):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./utils/asyncio_utils.py:60:4
+59	    task = asyncio.current_task()
+60	    assert task
+61	    set_task_debug_info(task, name=name, client=client)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./utils/data.py:11:8
+10	        f = inspect.getsourcefile(m)
+11	        assert f is not None
+12	        dirname = os.path.dirname(f)
+
+--------------------------------------------------
+>> Issue: [B113:request_without_timeout] Call to requests without timeout
+   Severity: Medium   Confidence: Low
+   CWE: CWE-400 (https://cwe.mitre.org/data/definitions/400.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b113_request_without_timeout.html
+   Location: ./utils/emoji.py:1870:8
+1869	
+1870	    r = requests.get("https://api.github.com/emojis")
+1871	    for name, url in r.json().items():
+
+--------------------------------------------------
+>> Issue: [B324:hashlib] Use of weak MD5 hash for security. Consider usedforsecurity=False
+   Severity: High   Confidence: High
+   CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html
+   Location: ./utils/magisk.py:90:16
+89	    # Mimics the -subject_hash_old option of openssl used for android certificate names
+90	    full_hash = hashlib.md5(ca.subject.public_bytes()).digest()
+91	    sho = full_hash[0] | (full_hash[1] << 8) | (full_hash[2] << 16) | full_hash[3] << 24
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./utils/signals.py:70:8
+69	    def connect(self, receiver: Callable[P, None]) -> None:
+70	        assert not asyncio.iscoroutinefunction(receiver)
+71	        super().connect(receiver)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./utils/signals.py:78:12
+77	        for ret in super().notify(*args, **kwargs):
+78	            assert ret is None or not inspect.isawaitable(ret)
+79	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: ./utils/strutils.py:252:4
+251	def cut_after_n_lines(content: str, n: int) -> str:
+252	    assert n > 0
+253	    pos = content.find("\n")
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./version.py:2:0
+1	import os
+2	import subprocess
+3	import sys
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html
+   Location: ./version.py:24:8
+23	        # cb0e3287090786fad566feb67ac07b8ef361b2c3 is the first mitmproxy commit.
+24	        subprocess.run(
+25	            ["git", "cat-file", "-e", "cb0e3287090786fad566feb67ac07b8ef361b2c3"],
+26	            stdout=subprocess.DEVNULL,
+27	            stderr=subprocess.DEVNULL,
+28	            cwd=here,
+29	            check=True,
+30	        )
+31	        git_describe = subprocess.check_output(
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./version.py:24:8
+23	        # cb0e3287090786fad566feb67ac07b8ef361b2c3 is the first mitmproxy commit.
+24	        subprocess.run(
+25	            ["git", "cat-file", "-e", "cb0e3287090786fad566feb67ac07b8ef361b2c3"],
+26	            stdout=subprocess.DEVNULL,
+27	            stderr=subprocess.DEVNULL,
+28	            cwd=here,
+29	            check=True,
+30	        )
+31	        git_describe = subprocess.check_output(
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b607_start_process_with_partial_path.html
+   Location: ./version.py:31:23
+30	        )
+31	        git_describe = subprocess.check_output(
+32	            ["git", "describe", "--tags", "--long"],
+33	            stderr=subprocess.STDOUT,
+34	            cwd=here,
+35	        )
+36	        last_tag, tag_dist_str, commit = git_describe.decode().strip().rsplit("-", 2)
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./version.py:31:23
+30	        )
+31	        git_describe = subprocess.check_output(
+32	            ["git", "describe", "--tags", "--long"],
+33	            stderr=subprocess.STDOUT,
+34	            cwd=here,
+35	        )
+36	        last_tag, tag_dist_str, commit = git_describe.decode().strip().rsplit("-", 2)
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html
+   Location: ./version.py:39:4
+38	        tag_dist = int(tag_dist_str)
+39	    except Exception:
+40	        pass
+41	    else:
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 38963
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 220
+		Medium: 6
+		High: 1
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 1
+		Medium: 5
+		High: 221
+Files skipped (0):

@@ -40,3 +40,111 @@ use GitHub Discussions!
 As an open source project, mitmproxy welcomes contributions of all forms.
 
 [![Dev Guide](https://shields.mitmproxy.org/badge/dev_docs-CONTRIBUTING.md-blue)](./CONTRIBUTING.md)
+
+--- 
+--- 
+---
+ 
+# Análise completa
+
+Segue o resumo dos pontos mais importantes dos relatórios Bandit, focando nos objetivos do trabalho:
+
+### 1. Componentes com Vulnerabilidades Conhecidas
+
+* **Arquivo:** `ASWBXML.py`
+
+* **Trechos avaliados:**
+    ```python
+    Linha 30: import xml.dom.minidom
+    Linha 819: self.xmlDoc = xml.dom.minidom.parseString(strXML)
+    ```
+
+* **Vulnerabilidade:**
+    O uso de `xml.dom.minidom` para processar XML não confiável pode permitir ataques como XXE (XML External Entity) e outros, pois não há proteção contra conteúdo malicioso.
+
+* **Recomendação:**
+    > Utilize a biblioteca `defusedxml` para processar XML de fontes externas, pois ela foi projetada para evitar ataques desse tipo.
+
+### 2. Desserialização Insegura
+
+* **Arquivo:** `magisk.py`
+
+* **Trecho avaliado:**
+    ```python
+    Linha 90: full_hash = hashlib.md5(ca.subject.public_bytes()).digest()
+    ```
+
+* **Vulnerabilidade:**
+    O uso do algoritmo MD5 para hash é considerado inseguro, pois é suscetível a colisões e ataques de força bruta.
+
+* **Recomendação:**
+    > Substitua MD5 por algoritmos mais seguros, como SHA-256, principalmente para operações relacionadas à segurança.
+
+### 3. Injeção de Comandos
+
+* **Arquivo:** `browser.py`
+
+* **Trechos avaliados:**
+    ```python
+    Linha 3: import subprocess
+    Linha 23: subprocess.run([...])
+    Linha 84: subprocess.Popen([...])
+    ```
+
+* **Vulnerabilidade:**
+    O uso de subprocessos sem validação adequada pode permitir a execução de comandos maliciosos, caso dados externos sejam utilizados.
+
+* **Recomendação:**
+    > Sempre sanitize e valide entradas antes de executar comandos do sistema. Evite construir comandos dinamicamente com dados do usuário.
+
+### 4. Validação de Entrada Insuficiente
+
+* **Arquivo:** `emoji.py`
+
+* **Trecho avaliado:**
+    ```python
+    Linha 1870: r = requests.get("[https://api.github.com/emojis](https://api.github.com/emojis)")
+    ```
+
+* **Vulnerabilidade:**
+    A ausência de timeout em requisições HTTP pode causar travamentos ou negação de serviço, caso o servidor não responda.
+
+* **Recomendação:**
+    > Sempre defina um timeout nas requisições externas e valide as respostas recebidas.
+
+---
+
+## Resumo Final
+
+Os relatórios Bandit mostram que o projeto mitmproxy possui exemplos reais de vulnerabilidades clássicas em código Python, como uso de componentes inseguros, algoritmos de hash quebrados, execução de comandos sem validação e falta de validação de entrada. Essas falhas podem ser exploradas por atacantes e comprometem a segurança do sistema.
+
+Para mitigar esses riscos, recomenda-se:
+
+* Utilizar bibliotecas seguras e atualizadas.
+* Adotar algoritmos de hash robustos.
+* Validar e sanitizar todas as entradas externas.
+* Definir timeouts e tratar exceções em operações de rede.
+
+Essas práticas estão alinhadas com a norma ISO/IEC 27002 e são essenciais para garantir a segurança de aplicações Python em ambientes críticos.
+
+---
+
+## Comandos para rodar o Bandit nos trechos citados
+
+Para executar o Bandit e analisar os principais pontos de vulnerabilidade do projeto, utilize os comandos abaixo no terminal:
+
+```bash
+# 1. Componentes com Vulnerabilidades Conhecidas
+bandit -r mitmproxy/contrib/wbxml/ASWBXML.py --format txt
+
+# 2. Desserialização Insegura
+bandit -r mitmproxy/utils/magisk.py --format txt
+
+# 3. Injeção de Comandos
+bandit -r mitmproxy/addons/browser.py --format txt
+
+# 4. Validação de Entrada Insuficiente
+bandit -r mitmproxy/utils/emoji.py --format txt
+```
+
+Esses comandos irão gerar relatórios detalhados sobre cada vulnerabilidade específica, facilitando a análise e documentação dos riscos encontrados.
